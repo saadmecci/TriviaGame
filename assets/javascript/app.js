@@ -33,10 +33,10 @@ $(document).ready(function() {
 			answerChoice4: "Selling poachers into slavery",
 		}, {
 			question: "6) The infamous slave soldiers known as the Unsullied are from which of the following cities?",
-			answerChoice1: "Braavos",
+			answerChoice1: "Astapor",
 			answerChoice2: "Pentos",
 			answerChoice3: "Volantis",
-			answerChoice4: "Astapor",
+			answerChoice4: "Braavos",
 		}
 	];
 
@@ -46,12 +46,12 @@ $(document).ready(function() {
 		questions[2].answerChoice4,
 		questions[3].answerChoice3,
 		questions[4].answerChoice4,
-		questions[5].answerChoice4,
+		questions[5].answerChoice1,
 	];
 
 	var questionsIndex = 0;
 
-	var countDown = 16;
+	var countDown = 11;
 
 	var questionsCorrect = 0;
 
@@ -82,53 +82,87 @@ $(document).ready(function() {
 
 	});
 
+	var runTimer = true;
+
 	function timer() {
 
-		countDown = countDown - 1;
+		if(runTimer === true) {
+			countDown = countDown - 1;
 
-		$("#timeRemaining").html("Time Remaining: " + countDown);
+			$("#timeRemaining").html("Time Remaining: " + countDown);
 
-		if (countDown === 0 && questionsIndex < 5) {
-			questionsUnanswered++;
-			countDown = 16;
-			questionsIndex++;
-			questionDisplayer();
-			answerChoiceClicker();
-		}
+			if (countDown === 0 && questionsIndex < 5) {
+				questionsUnanswered++;
+				countDown = 11;
+				questionsIndex++;
+				questionDisplayer();
+				answerChoiceClicker();
+			}
 
-		if (countDown === 0 && questionsIndex === 5) {
-			questionsUnanswered++;
-			quizResults();
+			if (countDown === 0 && questionsIndex === 5) {
+				questionsUnanswered++;
+				quizResults();
+			}
 		}
 	};
 
 	function answerChoiceClicker () {
 
-		$(".answerButton").on("click", function () {
+		var beenClicked = $(".answerButton").on("click", function () {
 
-			if(correctAnswers.indexOf(($(this).html())) === -1) {
+			if (correctAnswers.indexOf(($(this).html())) === -1) {
 				questionsIncorrect++;
 			} else {
 				questionsCorrect++;
 			}
 
-			countDown = 16;
+			countDown = 11;
 			questionsIndex++;
-			questionDisplayer();
-			answerChoiceClicker();
+
+			if(questionsIndex < 6) {
+				questionDisplayer();
+				answerChoiceClicker();
+			}
+
+			if (questionsIndex === 6) {
+				quizResults();
+			}
 
 		});
 	};
 
 	function quizResults () {
 
+		runTimer = false;
+
+		$("#timeRemaining").html("")
+
 		$("#questionHolder").html(
 			"Correct Answers: " + questionsCorrect + "<br>" +
 			"Incorrect Answers: " + questionsIncorrect + "<br>" +
-			"Unanswered: " + questionsUnanswered + "<br>" + "<br>" +
-			"<button class='btn btn-outline-warning startButton'>Try Again</button>"
+			"Unanswered: " + questionsUnanswered + "<br>" + "<br>"
 		);
+
+		$("#resetButton").html("<button class='btn btn-outline-warning resetButton'>Try Again</button>");
 	};
+
+	$("#resetButton").on("click", function () {
+
+		$("#resetButton").html("");
+
+		questionsCorrect = 0;
+		questionsIncorrect = 0;
+		questionsUnanswered = 0;
+		questionsIndex = 0;
+
+		questionDisplayer();
+
+		runTimer = true;
+		timer();
+
+		answerChoiceClicker();
+
+	});
 
 });
 
