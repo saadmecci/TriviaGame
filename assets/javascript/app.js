@@ -26,11 +26,11 @@ $(document).ready(function() {
 			answerChoice3: "Sandor Clegane",
 			answerChoice4: "Tormund Giantsbane",
 		}, {
-			question: "5) Jorah Mormont forfeited the claims on his inheritance and was banished from Westoros for what reason?",
-			answerChoice1: "Serving as a spy for Varys and informing on Daenerys Targaryen",
-			answerChoice2: "For refusing to marry the daughter of the king",
-			answerChoice3: "For refusing to join the Night's Watch",
-			answerChoice4: "For selling poachers into slavery",
+			question: "5) Jorah Mormont forfeited his inheritance and was banished from Westoros for what reason?",
+			answerChoice1: "Serving as a spy for Varys",
+			answerChoice2: "Refusing to marry the daughter of the king",
+			answerChoice3: "Refusing to join the Night's Watch",
+			answerChoice4: "Selling poachers into slavery",
 		}, {
 			question: "6) The infamous slave soldiers known as the Unsullied are from which of the following cities?",
 			answerChoice1: "Braavos",
@@ -45,10 +45,10 @@ $(document).ready(function() {
 	function questionDisplayer () {
 			
 		$("#questionHolder").html(questions[questionsIndex].question + "<br>" + "<br>" + 
-			questions[questionsIndex].answerChoice1 + "<br>" + 
-			questions[questionsIndex].answerChoice2 + "<br>" + 
-			questions[questionsIndex].answerChoice3 + "<br>" + 
-			questions[questionsIndex].answerChoice4);
+			"<button id='button'>" + questions[questionsIndex].answerChoice1 + "</button>" + "<br>" + 
+			"<button id='button'>" + questions[questionsIndex].answerChoice2 + "</button>" + "<br>" + 
+			"<button id='button'>" + questions[questionsIndex].answerChoice3 + "</button>" + "<br>" + 
+			"<button id='button'>" + questions[questionsIndex].answerChoice4) + "</button>";
 	};
 
 	var countDown = 21;
