@@ -1,0 +1,52 @@
+body {
+	background-image: url(../images/gotwallpaper.jpg)
+}
+
+@font-face {
+	font-family: "gotfont";
+	src: url("gotfont.ttf");
+	src: url(gotfont.ttf) format("truetype");
+}
+
+h1 {
+	color: #ffffff;
+	font-family: "gotfont";
+	margin-top: 50px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+#timeRemaining {
+	color: #ffffff;
+	font-family: "gotfont";
+	margin-top: 10px;
+	margin-bottom: 30px;
+	font-size: 20px;
+}
+
+.startButton {
+	color: #ffffff;
+	font-family: "gotfont";
+	margin-top: 50px;
+	margin-left: 90px;
+	font-size: 20px;
+	text-align: center;
+	background-color: #D1A100;
+	padding: 12px 15px 10px 15px;
+}
+
+#questionHolder {
+	color: #ffffff;
+	font-family: "gotfont";
+	margin-top: 50px;
+	font-size: 24px;
+	text-align: center;
+	padding: 12px 15px 10px 15px;
+}
+
+#countDown {
+	color: #ffffff;
+	font-size: 25px;
+	margin-top: 6px;
+	padding: 0px !important;
+}
