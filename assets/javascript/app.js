@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+	//multiple choice questions object
+
 	var questions = [
 		{
 			question: "1) A very small man can cast a very large shadow.",
@@ -40,6 +42,8 @@ $(document).ready(function() {
 		}
 	];
 
+	//correct answers array for the quetions object
+
 	var correctAnswers = [
 		questions[0].answerChoice3,
 		questions[1].answerChoice2,
@@ -49,15 +53,15 @@ $(document).ready(function() {
 		questions[5].answerChoice1,
 	];
 
+	//set up variables to be called on by diff functions
+
 	var questionsIndex = 0;
-
 	var countDown = 11;
-
 	var questionsCorrect = 0;
-
 	var questionsIncorrect = 0;
-
 	var questionsUnanswered = 0;
+
+	//function that will iterate through the all the questions in the questions object
 
 	function questionDisplayer () {
 			
@@ -70,17 +74,17 @@ $(document).ready(function() {
 		);
 	};
 
+
+	//button that will start the game and set the timer into motion
+
 	$(".startButton").on("click", function () {
-
 		$(this).parent().remove();
-
 		questionDisplayer();
-
 		var counter = setInterval(timer, 1000);
-
 		answerChoiceClicker();
-
 	});
+
+	//boolean set up in order to be able to turn timer function off
 
 	var runTimer = true;
 
@@ -100,7 +104,6 @@ $(document).ready(function() {
 			}
 
 			if (countDown === 0 && questionsIndex === 5) {
-				questionsUnanswered++;
 				quizResults();
 			}
 		}
