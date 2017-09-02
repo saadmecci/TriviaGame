@@ -45,10 +45,10 @@ $(document).ready(function() {
 	function questionDisplayer () {
 			
 		$("#questionHolder").html(questions[questionsIndex].question + "<br>" + "<br>" + 
-			"<button id='button'>" + questions[questionsIndex].answerChoice1 + "</button>" + "<br>" + 
-			"<button id='button'>" + questions[questionsIndex].answerChoice2 + "</button>" + "<br>" + 
-			"<button id='button'>" + questions[questionsIndex].answerChoice3 + "</button>" + "<br>" + 
-			"<button id='button'>" + questions[questionsIndex].answerChoice4) + "</button>";
+			"<button id='answerButton'>" + questions[questionsIndex].answerChoice1 + "</button>" + "<br>" + 
+			"<button id='answerButton'>" + questions[questionsIndex].answerChoice2 + "</button>" + "<br>" + 
+			"<button id='answerButton'>" + questions[questionsIndex].answerChoice3 + "</button>" + "<br>" + 
+			"<button id='answerButton'>" + questions[questionsIndex].answerChoice4) + "</button>";
 	};
 
 	var countDown = 21;
@@ -64,6 +64,11 @@ $(document).ready(function() {
 			questionsIndex++;
 			questionDisplayer();
 		}
+	};
+
+	function answerChoiceClicker () {
+
+
 	};
 	
 	$(".startButton").on("click", function () {
