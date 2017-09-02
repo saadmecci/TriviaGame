@@ -21,9 +21,9 @@ $(document).ready(function() {
 			answerChoice4: "Arthur Dayne",
 		}, {
 			question: "4) Member of the Brotherhood without Banners known for using a flaming sword in combat.",
-			answerChoice1: "Thoros of Myr",
+			answerChoice1: "Sandor Clegane",
 			answerChoice2: "Beric Dondarrion",
-			answerChoice3: "Sandor Clegane",
+			answerChoice3: "Thoros of Myr",
 			answerChoice4: "Tormund Giantsbane",
 		}, {
 			question: "5) Jorah Mormont forfeited his inheritance and was banished from Westoros for what reason?",
@@ -40,7 +40,24 @@ $(document).ready(function() {
 		}
 	];
 
+	var correctAnswers = [
+		questions[0].answerChoice3,
+		questions[1].answerChoice2,
+		questions[2].answerChoice4,
+		questions[3].answerChoice3,
+		questions[4].answerChoice4,
+		questions[5].answerChoice4,
+	];
+
 	var questionsIndex = 0;
+
+	var countDown = 16;
+
+	var questionsCorrect = 0;
+
+	var questionsIncorrect = 0;
+
+	var questionsUnanswered = 0;
 
 	function questionDisplayer () {
 			
@@ -53,33 +70,6 @@ $(document).ready(function() {
 		);
 	};
 
-	var countDown = 21;
-
-	function timer() {
-
-		countDown = countDown - 1;
-
-		$("#timeRemaining").html("Time Remaining: " + countDown);
-
-		if (countDown === 0) {
-			countDown = 21;
-			questionsIndex++;
-			questionDisplayer();
-		}
-	};
-
-	function answerChoiceClicker () {
-
-		$(".answerButton").on("click", function () {
-
-			countDown = 21;
-			questionsIndex++;
-			questionDisplayer();
-			answerChoiceClicker();
-
-		});
-	};
-	
 	$(".startButton").on("click", function () {
 
 		$(this).parent().remove();
@@ -91,14 +81,36 @@ $(document).ready(function() {
 		answerChoiceClicker();
 
 	});
-  
+
+	function timer() {
+
+		countDown = countDown - 1;
+
+		$("#timeRemaining").html("Time Remaining: " + countDown);
+
+		if (countDown === 0) {
+			countDown = 16;
+			questionsIndex++;
+			questionDisplayer();
+			answerChoiceClicker();
+		}
+	};
+
+	function answerChoiceClicker () {
+
+		var answerChoiceSelected = $(".answerButton").on("click", function () {
+
+			console.log($(this).html());
+
+			countDown = 16;
+			questionsIndex++;
+			questionDisplayer();
+			answerChoiceClicker();
+
+		});
+	};
+
 });
-
-
-//every time question choice is clicked counter should be reset, 
-//make answer choices buttons
-//record answer, unasnwered, and incorrect
-
 
 
 
