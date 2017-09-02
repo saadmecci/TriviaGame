@@ -51,14 +51,14 @@ h1 {
 	padding: 0px !important;
 }
 
-#answerButton {
+.answerButton {
 	color: #ffffff;
 	background-color: transparent;
 	border: none;
 	padding-top: 10px;
 }
 
-#answerButton:hover {
+.answerButton:hover {
 	background-color: #D1A100;
 }
 

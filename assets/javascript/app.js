@@ -44,11 +44,13 @@ $(document).ready(function() {
 
 	function questionDisplayer () {
 			
-		$("#questionHolder").html(questions[questionsIndex].question + "<br>" + "<br>" + 
-			"<button id='answerButton'>" + questions[questionsIndex].answerChoice1 + "</button>" + "<br>" + 
-			"<button id='answerButton'>" + questions[questionsIndex].answerChoice2 + "</button>" + "<br>" + 
-			"<button id='answerButton'>" + questions[questionsIndex].answerChoice3 + "</button>" + "<br>" + 
-			"<button id='answerButton'>" + questions[questionsIndex].answerChoice4) + "</button>";
+		$("#questionHolder").html(
+			questions[questionsIndex].question + "<br>" + "<br>" + 
+			"<button class='answerButton'>" + questions[questionsIndex].answerChoice1 + "</button>" + "<br>" + 
+			"<button class='answerButton'>" + questions[questionsIndex].answerChoice2 + "</button>" + "<br>" + 
+			"<button class='answerButton'>" + questions[questionsIndex].answerChoice3 + "</button>" + "<br>" + 
+			"<button class='answerButton'>" + questions[questionsIndex].answerChoice4 + "</button>"
+		);
 	};
 
 	var countDown = 21;
@@ -68,7 +70,14 @@ $(document).ready(function() {
 
 	function answerChoiceClicker () {
 
+		$(".answerButton").on("click", function () {
 
+			countDown = 21;
+			questionsIndex++;
+			questionDisplayer();
+			answerChoiceClicker();
+
+		});
 	};
 	
 	$(".startButton").on("click", function () {
@@ -78,6 +87,8 @@ $(document).ready(function() {
 		questionDisplayer();
 
 		var counter = setInterval(timer, 1000);
+
+		answerChoiceClicker();
 
 	});
   
