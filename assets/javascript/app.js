@@ -88,19 +88,29 @@ $(document).ready(function() {
 
 		$("#timeRemaining").html("Time Remaining: " + countDown);
 
-		if (countDown === 0) {
+		if (countDown === 0 && questionsIndex < 5) {
+			questionsUnanswered++;
 			countDown = 16;
 			questionsIndex++;
 			questionDisplayer();
 			answerChoiceClicker();
 		}
+
+		if (countDown === 0 && questionsIndex === 5) {
+			questionsUnanswered++;
+			quizResults();
+		}
 	};
 
 	function answerChoiceClicker () {
 
-		var answerChoiceSelected = $(".answerButton").on("click", function () {
+		$(".answerButton").on("click", function () {
 
-			console.log($(this).html());
+			if(correctAnswers.indexOf(($(this).html())) === -1) {
+				questionsIncorrect++;
+			} else {
+				questionsCorrect++;
+			}
 
 			countDown = 16;
 			questionsIndex++;
@@ -108,6 +118,16 @@ $(document).ready(function() {
 			answerChoiceClicker();
 
 		});
+	};
+
+	function quizResults () {
+
+		$("#questionHolder").html(
+			"Correct Answers: " + questionsCorrect + "<br>" +
+			"Incorrect Answers: " + questionsIncorrect + "<br>" +
+			"Unanswered: " + questionsUnanswered + "<br>" + "<br>" +
+			"<button class='btn btn-outline-warning startButton'>Try Again</button>"
+		);
 	};
 
 });
