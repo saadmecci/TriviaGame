@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
 	//multiple choice questions object
-
 	var questions = [
 		{
 			question: "1) A very small man can cast a very large shadow.",
@@ -43,7 +42,6 @@ $(document).ready(function() {
 	];
 
 	//correct answers array for the quetions object
-
 	var correctAnswers = [
 		questions[0].answerChoice3,
 		questions[1].answerChoice2,
@@ -54,7 +52,6 @@ $(document).ready(function() {
 	];
 
 	//set up variables to be called on by diff functions
-
 	var questionsIndex = 0;
 	var countDown = 11;
 	var questionsCorrect = 0;
@@ -62,7 +59,6 @@ $(document).ready(function() {
 	var questionsUnanswered = 0;
 
 	//function that will iterate through the all the questions in the questions object
-
 	function questionDisplayer () {
 			
 		$("#questionHolder").html(
@@ -76,7 +72,6 @@ $(document).ready(function() {
 
 
 	//button that will start the game and set the timer into motion
-
 	$(".startButton").on("click", function () {
 		$(this).parent().remove();
 		questionDisplayer();
@@ -85,9 +80,9 @@ $(document).ready(function() {
 	});
 
 	//boolean set up in order to be able to turn timer function off
-
 	var runTimer = true;
 
+	//timer function will press quiz forward if the timer countdown reaches 0
 	function timer() {
 
 		if(runTimer === true) {
@@ -103,16 +98,21 @@ $(document).ready(function() {
 				answerChoiceClicker();
 			}
 
+			//this if statement is when quiz reaches its end and class function to display answers correct/incorrect/unasnwered
+			//will error if this is taken out
 			if (countDown === 0 && questionsIndex === 5) {
 				quizResults();
 			}
 		}
 	};
 
+	//click function so quiz moves forward when user clicks an answer choice
 	function answerChoiceClicker () {
 
 		var beenClicked = $(".answerButton").on("click", function () {
 
+			//records if whether user got the incorrect answer by seeing if it appears in correct answer array
+			//else count up questions correct variable
 			if (correctAnswers.indexOf(($(this).html())) === -1) {
 				questionsIncorrect++;
 			} else {
@@ -122,11 +122,13 @@ $(document).ready(function() {
 			countDown = 11;
 			questionsIndex++;
 
+			//if its not the last question, display next question and enable click function
 			if(questionsIndex < 6) {
 				questionDisplayer();
 				answerChoiceClicker();
 			}
 
+			//if the last question has been reached, then run quiz results function for user to see how well they did
 			if (questionsIndex === 6) {
 				quizResults();
 			}
@@ -134,10 +136,13 @@ $(document).ready(function() {
 		});
 	};
 
+	//function that displays how many questions were correct, incorrect, or unanswered
 	function quizResults () {
 
+		//stops timer from running by turning off timer function
 		runTimer = false;
 
+		//empties timer div
 		$("#timeRemaining").html("")
 
 		$("#questionHolder").html(
@@ -146,9 +151,11 @@ $(document).ready(function() {
 			"Unanswered: " + questionsUnanswered + "<br>" + "<br>"
 		);
 
+		//displays a reset button for user to click on
 		$("#resetButton").html("<button class='btn btn-outline-warning resetButton'>Try Again</button>");
 	};
 
+	//when reset button is clicked, reset all values and run the game again
 	$("#resetButton").on("click", function () {
 
 		$("#resetButton").html("");
