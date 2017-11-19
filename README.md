@@ -20,4 +20,6 @@ The first question is displayed and a 10 second countdown gets displayed on the 
 
 Once the end of the trivia is reached, the site will display the number of correct, incorrect, and unanswered questions.
 
+If the **Try Again** button is clicked, the results are refreshed and quiz is restarted.
+
 <img src="assets/images/triviaResults.png" alt="Website Screenshot" height="500px" width="800px">
