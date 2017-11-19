@@ -17,3 +17,7 @@ When the user clicks on the **Start Quiz** button, the trivia begins.
 The first question is displayed and a 10 second countdown gets displayed on the page:
 
 <img src="assets/images/triviaQuestion.png" alt="Website Screenshot" height="500px" width="800px">
+
+Once the end of the trivia is reached, the site will display the number of correct, incorrect, and unanswered questions.
+
+<img src="assets/images/triviaResults.png" alt="Website Screenshot" height="500px" width="800px">
