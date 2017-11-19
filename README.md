@@ -1,6 +1,6 @@
 # TriviaGame
 
-A  Game of Thrones themed trivia I created while enrolled in the Fullstack Bootcamp at UT.
+A  [Game of Thrones themed trivia](https://saadmecci.github.io/TriviaGame/) I created while enrolled in the Fullstack Bootcamp at UT.
 
 It uses bootstrap and css for the layout and styling, and jQuery & javascript for the logic.
 
