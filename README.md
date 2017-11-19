@@ -8,4 +8,4 @@ It can be modified fairly easily to increase the number of questions in the triv
 
 The following image displays what the users will see when they first visit the site:
 
-<img src="assets/images/triviaBegins" alt="Website Screenshot" height="500px" width="800px">
+<img src="assets/images/triviaBegins.png" alt="Website Screenshot" height="500px" width="800px">
